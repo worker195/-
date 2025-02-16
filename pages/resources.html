@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الموارد - أكاديمية طفل وامرأة</title>
+    <link rel="stylesheet" href="resources-style.css">
+</head>
+<body>
+<header>
+    <a href="./loader.html" class="logo">أكاديمية طفل وامرأة</a>
+    <div class="dropdown" onclick="toggleDropdown()">☰</div>
+    <nav>
+        <a href="./loader.html">الصفحة الرئيسية</a>
+        <a href="about.html">من نحن</a>
+        <a href="programs.html">البرامج والخدمات</a>
+        <a href="events.html">الفعاليات</a>
+        <a href="resources.html">الموارد</a>
+        <a href="contact.html">تواصل معنا</a>
+    </nav>
+</header>
+
+<main>
+    <!-- شريط البحث -->
+    <section class="search-section">
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="ابحث عن الموارد..." onkeyup="searchResources()">
+            <button type="button" id="search-button">بحث</button>
+        </div>
+    </section>
+
+    <!-- قسم الموارد -->
+    <section class="resources">
+        <h1 class="section-title">الموارد المتاحة</h1>
+
+        <div class="resource-list" id="resource-list">
+            <!-- مورد 1 -->
+            <div class="resource-item">
+                <h2>دليل التربية الإيجابية</h2>
+                <p class="resource-description">دليل شامل للأمهات حول كيفية تطبيق أساليب التربية الإيجابية في حياتهم اليومية مع أطفالهم.</p>
+                <a href="javascript:void(0);" onclick="openModal('modal1')">اقرأ المزيد</a>
+            </div>
+
+            <!-- مورد 2 -->
+            <div class="resource-item">
+                <h2>قائمة بالكتب المفيدة للأطفال</h2>
+                <p class="resource-description">مجموعة من الكتب التي تنمي مهارات الأطفال وتساعدهم في التعلم والاكتشاف.</p>
+                <a href="javascript:void(0);" onclick="openModal('modal2')">اقرأ المزيد</a>
+            </div>
+
+            <!-- مورد 3 -->
+            <div class="resource-item">
+                <h2>دورات تدريبية للأمهات</h2>
+                <p class="resource-description">دورات تدريبية تهدف إلى تمكين الأمهات من أفضل الأساليب في التربية والاعتناء بالأطفال.</p>
+                <a href="javascript:void(0);" onclick="openModal('modal3')">اقرأ المزيد</a>
+            </div>
+
+            <!-- مورد 4 -->
+            <div class="resource-item">
+                <h2>قائمة بأفضل المواقع التعليمية للأطفال</h2>
+                <p class="resource-description">مواقع تفاعلية تساعد الأطفال على التعلم في مجالات متنوعة مثل الرياضيات والعلوم والفنون.</p>
+                <a href="javascript:void(0);" onclick="openModal('modal4')">اقرأ المزيد</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- النوافذ المنبثقة -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal1')">&times;</span>
+        <h2>دليل التربية الإيجابية</h2>
+        <p>محتوى إضافي حول دليل التربية الإيجابية...</p>
+    </div>
+</div>
+
+<div id="modal2" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal2')">&times;</span>
+        <h2>قائمة بالكتب المفيدة للأطفال</h2>
+        <p>محتوى إضافي حول الكتب المفيدة للأطفال...</p>
+    </div>
+</div>
+
+<div id="modal3" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal3')">&times;</span>
+        <h2>دورات تدريبية للأمهات</h2>
+        <p>محتوى إضافي حول الدورات التدريبية للأمهات...</p>
+    </div>
+</div>
+
+<div id="modal4" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal4')">&times;</span>
+        <h2>قائمة بأفضل المواقع التعليمية للأطفال</h2>
+        <p>محتوى إضافي حول المواقع التعليمية للأطفال...</p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 جميع الحقوق محفوظة - أكاديمية طفل وامرأة</p>
+</footer>
+
+<script>
+    // وظيفة البحث
+    function toggleDropdown() {
+        const nav = document.querySelector('nav');
+        nav.classList.toggle('active');
+    }
+
+    function searchResources() {
+        const input = document.getElementById('search-input').value.toLowerCase();
+        const resources = document.querySelectorAll('.resource-item');
+
+        resources.forEach(resource => {
+            const title = resource.querySelector('h2').textContent.toLowerCase();
+            const description = resource.querySelector('.resource-description').textContent.toLowerCase();
+
+            if (title.includes(input) || description.includes(input)) {
+                resource.style.display = 'block'; // عرض المورد إذا كان يتطابق مع البحث
+            } else {
+                resource.style.display = 'none'; // إخفاء المورد إذا لم يتطابق مع البحث
+            }
+        });
+    }
+
+    // فتح النافذة المنبثقة
+    // فتح النافذة المنبثقة
+    function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        const modalContent = modal.querySelector('.modal-content');
+        modal.style.display = 'block';
+        setTimeout(() => {
+            modalContent.classList.add('show'); // إضافة تأثير التحريك عند فتح المحتوى
+        }, 10);
+    }
+
+    // إغلاق النافذة المنبثقة
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        const modalContent = modal.querySelector('.modal-content');
+        modalContent.classList.remove('show'); // إزالة تأثير التحريك
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300); // الانتظار حتى يتم إخفاء النافذة بعد التأثير
+    }
+
+</script>
+</body>
+</html>

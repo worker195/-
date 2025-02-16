@@ -1,0 +1,384 @@
+/* إعدادات أساسية للصفحة */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    direction: rtl;
+}
+
+/* ترويسة الصفحة */
+header {
+    background-color: #005c99;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1000;
+}
+
+header .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white; /* Powerful color */
+    text-transform: uppercase; /* Makes the text more impactful */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4); /* Adds shadow for a 3D effect */
+    font-family: 'Arial', sans-serif; /* Clean and modern font */
+    transition: all 0.3s ease; /* Smooth transition effect */
+    font-style: normal;
+    text-decoration: none; /* Removes underline */
+}
+
+header nav {
+    display: flex;
+    gap: 20px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #ff9e00;
+}
+
+header .dropdown {
+    font-size: 2.5em;
+    cursor: pointer;
+    display: none;
+}
+
+/* استجابة للأجهزة المحمولة */
+@media (max-width: 768px) {
+    header nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background-color: #005c99;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
+    header nav.active {
+        display: flex;
+    }
+
+    header .dropdown {
+        display: block;
+    }
+}
+
+/* محتوى الصفحة */
+main {
+    padding: 40px 20px;
+}
+
+/* قسم من نحن */
+.about {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    gap: 20px;
+}
+
+.about .about-content {
+    flex: 1;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-right: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about .about-content:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.about .about-content h1 {
+    color: #005c99;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.about .about-content p {
+    font-size: 1.2em;
+    line-height: 1.7;
+    color: #555;
+}
+
+.about .about-image {
+    flex: 1;
+    padding: 20px;
+}
+
+.about .about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.about .about-image img:hover {
+    transform: scale(1.05);
+}
+
+/* قسم الرؤية والرسالة */
+.mission-vision {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.mission, .vision {
+    flex: 1;
+    background-color: white;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mission h2, .vision h2 {
+    color: #005c99;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.mission p, .vision p {
+    font-size: 1.2em;
+    line-height: 1.7;
+    color: #555;
+}
+
+.mission:hover, .vision:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* قسم فريق العمل */
+.team {
+    margin-bottom: 40px;
+}
+
+.team h2 {
+    text-align: center;
+    color: #005c99;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.team-member {
+    flex: 1;
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.team-member img:hover {
+    transform: scale(1.1);
+}
+
+.team-member h3 {
+    color: #005c99;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.team-member p {
+    font-size: 1.2em;
+    line-height: 1.7;
+    color: #555;
+}
+
+/* قسم الشهادات */
+.testimonials {
+    background-color: #f2f9ff;
+    padding: 40px 20px;
+    margin-bottom: 40px;
+}
+
+.testimonials h2 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #005c99;
+    margin-bottom: 20px;
+}
+
+.testimonial-item {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.testimonial-item span {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.1em;
+    color: #007acc;
+}
+
+/* قسم التواصل */
+.contact-us {
+    background-color: white;
+    padding: 40px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-us:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.contact-us h2 {
+    color: #005c99;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.contact-us p {
+    font-size: 1.2em;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.contact-us button {
+    background-color: #ff9e00;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-us button:hover {
+    background-color: #ff8c00;
+}
+
+/* إضافة تأثيرات للمحتوى */
+.about-content, .mission, .vision, .team-member, .testimonial-item, .contact-us {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-content:hover, .mission:hover, .vision:hover, .team-member:hover, .testimonial-item:hover, .contact-us:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+/* استجابة للأجهزة المحمولة */
+@media (max-width: 1024px) {
+    .about, .mission-vision, .team-members {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about .about-content,
+    .about .about-image,
+    .mission,
+    .vision,
+    .team-member {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .about .about-image img {
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    header nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background-color: #005c99;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
+    header nav.active {
+        display: flex;
+    }
+
+    header .dropdown {
+        display: block;
+    }
+
+    .contact-details {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+
+
+    .about .about-content h1,
+    .mission h2,
+    .vision h2,
+    .team h2,
+    .testimonials h2,
+    .contact-us h2 {
+        font-size: 2em;
+    }
+
+    .about .about-content p,
+    .mission p,
+    .vision p,
+    .team-member p,
+    .testimonial-item,
+    .contact-us p {
+        font-size: 1em;
+    }
+
+    .team-member img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .contact-us button {
+        padding: 12px 24px;
+        font-size: 1em;
+    }
+}

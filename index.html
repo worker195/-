@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصفحة الرئيسية - أكاديمية طفل وامرأة</title>
+    <link rel="stylesheet" href="pages/style.css">
+</head>
+<body>
+<header>
+    <a href="pages/loader.html" class="logo">أكاديمية طفل وامرأة</a>
+    <div class="dropdown" onclick="toggleDropdown()">☰</div>
+    <nav>
+        <a href="pages/loader.html">الصفحة الرئيسية</a>
+        <a href="pages/about.html">من نحن</a>
+        <a href="pages/programs.html">البرامج والخدمات</a>
+        <a href="pages/events.html">الفعاليات</a>
+        <a href="pages/resources.html">الموارد</a>
+        <a href="pages/contact.html">تواصل معنا</a>
+    </nav>
+</header>
+
+<main>
+    <!-- قسم الترحيب -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>مرحبًا بكم في أكاديمية طفل وامرأة</h1>
+            <p>
+                نسعى لتمكين الأمهات وتنمية مهارات الأطفال من خلال برامج تعليمية مبتكرة وخدمات داعمة.
+                انضموا إلينا الآن لبناء مستقبل مشرق لعائلتكم!
+                نقدم لكم خدمات تربوية، تحليل إحصائي ، رسائل الماجستير، والدكتوراه،  ومشاريع التخرج 🎓،  تدقيق إملائي ولغوي، دورات تدريبية وتأسيسية ، والكثير
+            </p>
+            <button onclick="location.href='about.html'">تعرف علينا</button>
+        </div>
+        <div class="hero-image">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ6IquzPYIg9oVzTB_MeXf2Nm9zrM6sYx1pA&s" alt="عائلة سعيدة">
+        </div>
+    </section>
+
+    <!-- قسم الخدمات -->
+    <section class="services">
+        <h2>خدماتنا المميزة</h2>
+        <div class="service-cards">
+            <div class="service-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMM71HIk14ZbZDKNMkuph0UF93oLnPoLJq8w&s" alt="ورش عمل للأمهات">
+                <h3>ورش عمل للأمهات</h3>
+                <p>تعلمي تقنيات التربية الإيجابية والتوازن بين العمل والأسرة.</p>
+                <button onclick="location.href='programs.html'">المزيد</button>
+            </div>
+            <div class="service-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT4Muvk970yYJ9RUUyz0n9Jd7vho97H0ivOA&s" alt="أنشطة للأطفال">
+                <h3>أنشطة للأطفال</h3>
+                <p>برامج تنمية الإبداع وبناء الثقة بالنفس.</p>
+                <button onclick="location.href='programs.html'">المزيد</button>
+            </div>
+            <div class="service-card">
+                <img src="data:image/jpeg;base64,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" alt="جلسات دعم نفسي">
+
+                <h3>جلسات دعم نفسي</h3>
+                <p>استشارات وندوات لتعزيز الصحة النفسية.</p>
+                <button onclick="location.href='programs.html'">المزيد</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الأحداث القادمة -->
+    <section class="events">
+        <h2>الفعاليات القادمة</h2>
+        <div class="event-list">
+            <div class="event-item">
+                <h3>ورشة التربية الإيجابية</h3>
+                <p>تعرفي على أهم أساليب التربية الحديثة مع خبراء المجال.</p>
+                <span>التاريخ: 25 يناير 2025</span>
+                <button onclick="location.href='events.html'">احجز مقعدًا</button>
+            </div>
+            <div class="event-item">
+                <h3>برنامج تنمية المهارات للأطفال</h3>
+                <p>أنشطة تعليمية وترفيهية لتنمية مهارات الأطفال.</p>
+                <span>التاريخ: 30 يناير 2025</span>
+                <button onclick="location.href='events.html'">احجز مقعدًا</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الموارد -->
+    <section class="resources">
+        <h2>الموارد التعليمية</h2>
+        <p>استكشف مكتبتنا من المقالات والفيديوهات المفيدة لتحسين حياتك الأسرية.</p>
+        <div class="resource-links">
+            <a href="https://example.com/resource1.pdf" target="_blank">دليل التربية الإيجابية (PDF)</a>
+            <a href="https://example.com/video1.mp4" target="_blank">فيديو: تعزيز الثقة بالنفس للأطفال</a>
+        </div>
+    </section>
+
+    <!-- قسم الشهادات -->
+    <section class="testimonials">
+        <h2>قالوا عنا</h2>
+        <div class="testimonial-item">
+            <p>"الورش التي تقدمها الأكاديمية غيرت طريقتي في التعامل مع أطفالي."</p>
+            <span>- أم محمد</span>
+        </div>
+        <div class="testimonial-item">
+            <p>"أنشطة الأطفال كانت ممتعة جدًا وأثرت بشكل إيجابي على ثقة ابنتي بنفسها."</p>
+            <span>- أم سارة</span>
+        </div>
+    </section>
+
+    <!-- قسم الاشتراك في النشرة البريدية -->
+    <section class="newsletter">
+        <h2>اشترك في نشرتنا البريدية</h2>
+        <p>ابق على اطلاع دائم بأحدث الفعاليات والمقالات.</p>
+        <form>
+            <input type="email" placeholder="أدخل بريدك الإلكتروني" required>
+            <button type="submit">اشترك</button>
+        </form>
+    </section>
+
+    <!-- قسم الفريق -->
+    <!-- قسم الفريق -->
+    <section class="team">
+        <h2>فريقنا</h2>
+        <div class="team-member">
+            <img src="https://www.smart4kids.net/wp-content/uploads/2015/04/member.jpg" alt="فريق أكاديمية طفل وامرأة">
+            <h3>أسماء النجار</h3>
+            <p>خبيرة في التربية الإيجابية.</p>
+        </div>
+        <div class="team-member">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTydWyy0gWCcOWaypFCbqwG8ts50zrb1U7dpMgXc3__TEY8-NQjDehHzQADsrZb_wQ2mHM&usqp=CAU" alt="فريق أكاديمية طفل وامرأة">
+            <h3>ليلى الزهيري</h3>
+            <p>أخصائية في تنمية مهارات الأطفال.</p>
+        </div>
+    </section>
+
+    <!-- قسم الأسئلة الشائعة -->
+    <section class="faq">
+        <h2>الأسئلة الشائعة</h2>
+        <div class="faq-item">
+            <h3>كيف يمكنني التسجيل في الفعاليات؟</h3>
+            <p>يمكنك التسجيل من خلال زيارة قسم الفعاليات واختيار الحدث الذي ترغب في الانضمام إليه.</p>
+        </div>
+        <div class="faq-item">
+            <h3>هل توجد برامج خاصة للأمهات العاملات؟</h3>
+            <p>نعم، نقدم ورش عمل وبرامج تدريبية مخصصة للأمهات العاملات لمساعدتهن في التوازن بين العمل والحياة الأسرية.</p>
+        </div>
+    </section>
+
+    <!-- قسم الاتصال -->
+    <section class="contact">
+        <h2>تواصل معنا</h2>
+        <p>لأي استفسار أو اقتراح، يمكنكم التواصل معنا عبر البريد الإلكتروني أو الهاتف.</p>
+        <p>Email: <a href="llkhdmataltlymytmrkznwn@gmail.com">llkhdmataltlymytmrkznwn@gmail.com</a></p>
+        <p>Phone: <a href="tel:00972 59-506-1028">+972 59-506-1028</a></p>
+    </section>
+
+</main>
+
+<script>
+    function toggleDropdown() {
+        const nav = document.querySelector('nav');
+        nav.classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>

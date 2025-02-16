@@ -1,0 +1,672 @@
+/* إعدادات عامة */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    direction: rtl;
+    text-align: right;
+    background: #f9f9f9;
+    color: #333;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, #005c99, #007acc);
+    color: #fff;
+    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white; /* Powerful color */
+    text-transform: uppercase; /* Makes the text more impactful */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4); /* Adds shadow for a 3D effect */
+    font-family: 'Arial', sans-serif; /* Clean and modern font */
+    transition: all 0.3s ease; /* Smooth transition effect */
+    font-style: normal;
+    text-decoration: none; /* Removes underline */
+}
+
+
+
+
+
+header nav {
+    display: flex;
+    gap: 15px;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+header nav a:hover {
+    color: #ffd700;
+}
+
+header .dropdown {
+    display: none;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+nav.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    background: #005c99;
+    width: 100%;
+    padding: 10px;
+}
+
+/* قسم الترحيب */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    background: linear-gradient(to right, #e6f7ff, #cceeff);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero-content {
+    max-width: 50%;
+}
+
+.hero-content h1 {
+    font-size: 2.5em;
+    color: #005c99;
+    animation: slideIn 1.5s ease-in-out;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+.hero-content button {
+    background: #007acc;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s ease-in-out;
+}
+
+.hero-content button:hover {
+    background: #005c99;
+}
+
+.hero-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    animation: zoomIn 1.5s ease-in-out;
+}
+
+/* قسم الخدمات */
+.services {
+    padding: 40px 20px;
+    background: #fff;
+}
+
+.services h2 {
+    text-align: center;
+    font-size: 2em;
+    color: #005c99;
+    margin-bottom: 20px;
+}
+
+.service-cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.service-card {
+    background: #e6f7ff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.service-card img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #007acc;
+}
+
+.service-card p {
+    font-size: 1em;
+    margin-bottom: 15px;
+}
+
+.service-card button {
+    background: #005c99;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s ease-in-out;
+}
+
+.service-card button:hover {
+    background: #004080;
+}
+
+/* قسم الفعاليات */
+.events {
+    padding: 40px 20px;
+    background: #f2f9ff;
+}
+
+.events h2 {
+    text-align: center;
+    font-size: 2em;
+    color: #005c99;
+    margin-bottom: 20px;
+}
+
+.event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.event-item {
+    background: #e6f7ff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.event-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #007acc;
+}
+
+.event-item p {
+    margin-bottom: 10px;
+}
+
+.event-item button {
+    background: #005c99;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s ease-in-out;
+}
+
+.event-item button:hover {
+    background: #004080;
+}
+
+/* قسم الموارد */
+.resources {
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #bee1f6, #ffffff);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.resources h2 {
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #004080;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.resource-links {
+    text-align: center;
+    font-size: 1.3em;
+    line-height: 2.5;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.resource-links a {
+    display: inline-block;
+    color: #007acc;
+    text-decoration: none;
+    background-color: #e6f7ff;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resource-links a:hover {
+    color: #ffffff;
+    background-color: #005c99;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 92, 153, 0.3);
+}
+
+.resource-links a:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+/* قسم الشهادات */
+.testimonials {
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #e6f7ff, #ffffff);
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    margin: 30px auto;
+    max-width: 900px;
+}
+
+.testimonials h2 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #004080;
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-item {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.testimonial-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-item p {
+    font-size: 1.3em;
+    line-height: 1.8;
+    color: #555;
+    font-style: italic;
+}
+@media (max-width: 768px) {
+    header nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background-color: #005c99;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
+    header nav.active {
+        display: flex;
+    }
+
+    header .dropdown {
+        display: block;
+    }
+}
+.testimonial-item span {
+    display: block;
+    font-size: 1.1em;
+    color: #007acc;
+    margin-top: 15px;
+    font-weight: bold;
+}
+header .dropdown {
+    font-size: 2.5em;
+    cursor: pointer;
+    display: none;
+}
+.testimonial-item:before {
+    content: "“";
+    font-size: 3em;
+    color: #005c99;
+    position: absolute;
+    top: -10px;
+    left: 20px;
+}
+
+.newsletter {
+    padding: 40px 20px;
+    background: #e6f7ff;
+    text-align: center;
+}
+
+.newsletter h2 {
+    font-size: 2em;
+    color: #005c99;
+    margin-bottom: 20px;
+}
+
+.newsletter form {
+    display: inline-flex;
+    gap: 10px;
+}
+
+.newsletter input {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #007acc;
+    border-radius: 5px;
+    width: 250px;
+}
+
+.newsletter button {
+    background: #005c99;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s ease-in-out;
+}
+
+.newsletter button:hover {
+    background: #004080;
+}
+
+/* الحركات */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .dropdown {
+        display: block;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .service-cards {
+        justify-content: center;
+    }
+
+    .service-card {
+        width: 80%;
+    }
+}
+/* تحسين تصميم قسم الفريق */
+.team {
+    padding: 60px 0;
+    background: linear-gradient(to right, #f4f4f4, #ffffff);
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.team h2 {
+    font-size: 2.8rem;
+    color: #3b3b3b;
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.team-member {
+    display: inline-block;
+    width: 30%;
+    margin: 0 15px;
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.team-member img {
+    width: 80%;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 4px solid #ff8c00;
+}
+
+.team-member h3 {
+
+    font-size: 1.8rem;
+    color: #ff8c00;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.team-member p {
+
+    font-size: 1.1rem;
+    color: #6b6b6b;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* تحسين تصميم قسم الأسئلة الشائعة */
+.faq {
+    padding: 60px 0;
+    background-color: #f7f7f7;
+    text-align: left;
+}
+
+.faq h2 {
+    font-size: 2.8rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.faq-item {
+    margin-bottom: 30px;
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: right;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.faq-item h3 {
+    font-size: 1.6rem;
+    color: #0056b3;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.faq-item p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.faq-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* تحسين تصميم قسم الاتصال */
+.contact {
+    padding: 60px 0;
+    background: #ff8c00;
+    text-align: center;
+    color: #ffffff;
+}
+
+.contact h2 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.contact p {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.contact a {
+    font-size: 1.3rem;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.contact a:hover {
+    color: #333;
+    text-decoration: underline;
+}
+@media (max-width: 480px) {
+
+
+    header .logo {
+        font-size: 1.2em;
+    }
+
+
+}header {
+     background-color: #005c99;
+     color: white;
+     padding: 15px 20px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     position: relative;
+     z-index: 1000;
+ }
+
+header .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+    font-family: 'Arial', sans-serif;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+header nav {
+    display: flex;
+    gap: 20px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #ff9e00;
+}
+
+header .dropdown {
+    font-size: 2.5em;
+    cursor: pointer;
+    display: none;
+}
+@media (max-width: 768px) {
+    header nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background-color: #005c99;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
+    header nav.active {
+        display: flex;
+    }
+
+    header .dropdown {
+        display: block;
+    }
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحميل | أكاديمية طفل وامرأة</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #003366, #0066cc);
+            font-family: 'Arial', sans-serif;
+            color: white;
+            overflow: hidden;
+        }
+        .loader {
+            transform: rotateZ(45deg);
+            perspective: 1000px;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            border: 8px solid #FF3D00;
+            border-top: 8px solid transparent;
+            animation: rotate 1.5s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+        }
+
+        .loader:before,
+        .loader:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: inherit;
+            height: inherit;
+            border-radius: 50%;
+            transform: rotateX(70deg);
+            animation: spin 1.5s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+        }
+
+        .loader:after {
+            color: #FF3D00;
+            transform: rotateY(70deg);
+            animation-delay: 0.4s;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: translate(-50%, -50%) rotateZ(0deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotateZ(360deg);
+            }
+        }
+
+        @keyframes spin {
+            0%,
+            100% {
+                box-shadow: 0 0 15px 3px currentcolor;
+            }
+            12% {
+                box-shadow: 10px 10px 15px 3px currentcolor;
+            }
+            25% {
+                box-shadow: 0 10px 15px 3px currentcolor;
+            }
+            37% {
+                box-shadow: -10px 10px 15px 3px currentcolor;
+            }
+            50% {
+                box-shadow: -10px 0 15px 3px currentcolor;
+            }
+            62% {
+                box-shadow: -10px -10px 15px 3px currentcolor;
+            }
+            75% {
+                box-shadow: 0 -10px 15px 3px currentcolor;
+            }
+            87% {
+                box-shadow: 10px -10px 15px 3px currentcolor;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+<span class="loader"></span>
+
+<script>
+    window.onload = function() {
+        setTimeout(function() {
+            window.location.href = "../index.html";
+        }, 1500);
+    };
+</script>
+</body>
+</html>
