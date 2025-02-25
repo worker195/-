@@ -1,4 +1,5 @@
 /* إعدادات أساسية للصفحة */
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f9f9f9;
@@ -7,33 +8,115 @@ body {
     direction: rtl;
 }
 
-/* ترويسة الصفحة */
-header {
-    background-color: #005c99;
-    color: white;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    z-index: 1000;
+/* استجابة للأجهزة المحمولة */
+@media (max-width: 768px) {
+    header nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background-color: #005c99;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
+    header nav.active {
+        display: flex;
+    }
+
+    header .dropdown {
+        display: block;
+    }
+
+    .programs-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .program-card {
+        width: 90%; /* Makes cards full-width for better mobile display */
+    }
+
+    .program-info h2 {
+        font-size: 1.5em;
+    }
+
+    .program-info p {
+        font-size: 1em;
+    }
+
+    .program-info button {
+        font-size: 1em;
+        padding: 12px 24px;
+    }
 }
+
+/* استجابة للشاشات الصغيرة جداً */
+@media (max-width: 480px) {
+    header {
+        padding: 10px 15px;
+    }
+
+    header .logo {
+        font-size: 1.2em;
+    }
+
+    .programs-header h1 {
+        font-size: 2em;
+    }
+
+    .program-card {
+        width: 100%;
+    }
+
+    .program-info h2 {
+        font-size: 1.3em;
+    }
+
+    .program-info p {
+        font-size: 0.9em;
+    }
+
+    .program-info button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+}
+@media (max-width: 480px) {
+
+
+    header .logo {
+        font-size: 1.2em;
+    }
+
+
+}header {
+     background-color: #005c99;
+     color: white;
+     padding: 15px 20px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     position: relative;
+     z-index: 1000;
+ }
 
 header .logo {
     font-size: 1.5em;
     font-weight: bold;
-    color: white; /* Powerful color */
-    text-transform: uppercase; /* Makes the text more impactful */
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4); /* Adds shadow for a 3D effect */
-    font-family: 'Arial', sans-serif; /* Clean and modern font */
-    transition: all 0.3s ease; /* Smooth transition effect */
-    font-style: normal;
-    text-decoration: none; /* Removes underline */
+    color: white;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+    font-family: 'Arial', sans-serif;
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 header nav {
     display: flex;
     gap: 20px;
+    width: 90%;
 }
 
 header nav a {
@@ -52,8 +135,6 @@ header .dropdown {
     cursor: pointer;
     display: none;
 }
-
-/* استجابة للأجهزة المحمولة */
 @media (max-width: 768px) {
     header nav {
         display: none;
@@ -62,7 +143,7 @@ header .dropdown {
         background-color: #005c99;
         top: 100%;
         right: 0;
-        width: 100%;
+        width: 90%;
         padding: 20px;
     }
 
@@ -135,6 +216,7 @@ main {
 
 /* قسم الرؤية والرسالة */
 .mission-vision {
+    width: 80%;
     display: flex;
     gap: 40px;
     margin-bottom: 40px;
@@ -312,11 +394,11 @@ main {
     }
 
     .about .about-content,
-    .about .about-image,
+
     .mission,
     .vision,
     .team-member {
-        width: 100%;
+
         margin-right: 0;
     }
 
@@ -353,7 +435,9 @@ main {
 
 @media (max-width: 480px) {
 
-
+    .about .about-content{
+        width: auto;
+    }
     .about .about-content h1,
     .mission h2,
     .vision h2,
@@ -361,6 +445,7 @@ main {
     .testimonials h2,
     .contact-us h2 {
         font-size: 2em;
+        width: auto;
     }
 
     .about .about-content p,
@@ -380,5 +465,244 @@ main {
     .contact-us button {
         padding: 12px 24px;
         font-size: 1em;
+    }
+}
+*{
+    width: auto;
+}
+/* الأساسيات */
+
+
+/* تنسيق القسم */
+.services {
+    background-color: #ffffff;
+    padding: 40px 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    width: 90%;
+    transition: all 0.3s ease;
+}
+
+.services:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* العنوان */
+.services h2 {
+    font-size: 36px;
+    color: #4CAF50;
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* قائمة الخدمات */
+.services ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.services ul li {
+    font-size: 18px;
+    padding: 12px 20px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.services ul li:hover {
+    background-color: #e0f7fa;
+    border-color: #4CAF50;
+    transform: translateX(10px);
+    cursor: pointer;
+}
+
+/* تصميم للعرض على الشاشات الكبيرة */
+@media (min-width: 1024px) {
+    .services h2 {
+        font-size: 40px;
+    }
+    .services ul li {
+        font-size: 20px;
+    }
+}
+
+/* تصميم للعرض على الشاشات المتوسطة (مثل الآيباد) */
+@media (max-width: 1024px) and (min-width: 768px) {
+    .services h2 {
+        font-size: 32px;
+    }
+    .services ul li {
+        font-size: 18px;
+    }
+}
+
+/* تصميم للعرض على الشاشات الصغيرة (مثل الجوال) */
+@media (max-width: 767px) {
+    .services {
+        padding: 20px 15px;
+    }
+
+    .services h2 {
+        font-size: 28px;
+    }
+
+    .services ul li {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+}
+
+/* استجابة للأجهزة المحمولة */
+@media (max-width: 768px) {
+    header nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background-color: #005c99;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
+    header nav.active {
+        display: flex;
+    }
+
+    header .dropdown {
+        display: block;
+    }
+
+    .programs-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .program-card {
+        width: 90%; /* Makes cards full-width for better mobile display */
+    }
+
+    .program-info h2 {
+        font-size: 1.5em;
+    }
+
+    .program-info p {
+        font-size: 1em;
+    }
+
+    .program-info button {
+        font-size: 1em;
+        padding: 12px 24px;
+    }
+}
+
+/* استجابة للشاشات الصغيرة جداً */
+@media (max-width: 480px) {
+    header {
+        padding: 10px 15px;
+    }
+
+    header .logo {
+        font-size: 1.2em;
+    }
+
+    .programs-header h1 {
+        font-size: 2em;
+    }
+
+    .program-card {
+        width: 100%;
+    }
+
+    .program-info h2 {
+        font-size: 1.3em;
+    }
+
+    .program-info p {
+        font-size: 0.9em;
+    }
+
+    .program-info button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+}
+@media (max-width: 480px) {
+
+
+    header .logo {
+        font-size: 1.2em;
+    }
+
+
+}header {
+     background-color: #005c99;
+     color: white;
+     padding: 15px 20px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     position: relative;
+     z-index: 1000;
+ }
+
+header .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+    font-family: 'Arial', sans-serif;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+header nav {
+    display: flex;
+    gap: 20px;
+    width: 90%;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #ff9e00;
+}
+
+header .dropdown {
+    font-size: 2.5em;
+    cursor: pointer;
+    display: none;
+}
+@media (max-width: 768px) {
+    header nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background-color: #005c99;
+        top: 100%;
+        right: 0;
+        width: 90%;
+        padding: 20px;
+    }
+
+    header nav.active {
+        display: flex;
+    }
+
+    header .dropdown {
+        display: block;
     }
 }

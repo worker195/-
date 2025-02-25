@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول</title>
+    <style>
+        /* إعادة تعيين الأنماط الافتراضية */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* تنسيق عام للصفحة */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f9fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        /* تأثيرات الرسوم المتحركة */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        /* تنسيق الحاويات */
+        .form-container {
+            background-color: #ffffff;
+            padding: 40px 45px;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 0.6s forwards, slideIn 0.8s ease-out forwards;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            max-height: 500px; /* تعيين الحد الأقصى للارتفاع */
+            height: auto; /* يتيح التحكم في الارتفاع بناءً على المحتوى */
+            overflow: auto; /* في حال كان هناك محتوى زائد يظهر شريط التمرير */
+        }
+
+
+        /* العنوان */
+        h2 {
+            color: #3a76d8;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* تنسيق الحقول */
+        .input-field {
+            width: 100%;
+            padding: 14px;
+            margin: 15px 0;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            color: #555;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .input-field:focus {
+            border-color: #3a76d8;
+            background-color: #ffffff;
+            outline: none;
+        }
+
+        .input-field:focus::placeholder {
+            color: transparent;
+        }
+
+        .input-field::placeholder {
+            color: #bbb;
+            transition: color 0.3s ease;
+        }
+
+        /* تنسيق الأزرار */
+        .button {
+            width: 100%;
+            padding: 16px;
+            background-color: #3a76d8;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            margin: 15px 0;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #2f5db8;
+            transform: translateY(-3px);
+        }
+
+        .button:active {
+            transform: translateY(1px);
+        }
+
+        /* تنسيق الروابط */
+        .link {
+            color: #3a76d8;
+            font-size: 16px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .link:hover {
+            color: #2f5db8;
+        }
+
+        /* تباعد بين العناصر */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* إضافة زر الرجوع */
+        .back-button {
+            margin-top: 20px;
+            text-decoration: underline;
+            cursor: pointer;
+            color: #3a76d8;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* تعديل النص في نموذج استعادة كلمة السر */
+        #forgot-password-text {
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* تباعد بين النصوص */
+        h2, .input-field, .button, .link, .back-button {
+            transition: all 0.3s ease;
+        }
+
+        /* إضافة تأثيرات عند إدخال البيانات */
+        .input-field:focus {
+            background-color: #ffffff;
+        }
+
+        /* تنسيق الجداول المنبثقة (المودال) */
+        #forgot-password-form,
+        #reset-password-form,
+        #register-form {
+            display: none;
+        }
+
+        /* تنسيق الحقول التي تحتوي على أيقونات */
+        /*.input-field.icon {*/
+        /*    background: url('path_to_icon') no-repeat scroll 10px center;*/
+        /*    background-size: 20px;*/
+        /*    padding-left: 35px;*/
+        /*}*/
+
+        /* تصميم الحواف المتدرجة */
+        input[type="text"], input[type="password"], input[type="email"], .button {
+            border-radius: 12px;
+            border: 2px solid #ddd;
+            padding: 12px;
+            margin: 12px 0;
+            font-size: 16px;
+            transition: background-color 0.3s ease, border 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+            border-color: #3a76d8;
+            background-color: #ffffff;
+        }
+
+        /* تأثيرات للأزرار المتحركة */
+        .button {
+            transition: transform 0.2s ease, background-color 0.3s ease;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+        }
+
+        .button:active {
+            transform: scale(0.98);
+        }
+
+        /* حركات سلايدر */
+        @keyframes slideUp {
+            0% {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .fade-in-element {
+            animation: slideUp 0.6s ease-out;
+        }
+
+        /* ألوان تنسيق الحقول مع التركيز */
+        input:focus, textarea:focus, select:focus {
+            border: 2px solid #3a76d8;
+            background-color: #fff;
+        }
+
+        /* تنسيق النصوص والروابط */
+        .text-link {
+            font-size: 15px;
+            color: #3a76d8;
+            text-decoration: none;
+        }
+
+        .text-link:hover {
+            color: #2f5db8;
+        }
+
+        /* قائمة الإشعارات */
+        .notification {
+            background-color: #ffd700;
+            color: #333;
+            padding: 10px 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .notification.success {
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        .notification.error {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+
+        .notification.info {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        /* الحواف الدائرية للأزرار */
+        .button-round {
+            padding: 18px;
+            font-size: 20px;
+            border-radius: 50px;
+            background-color: #3a76d8;
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .button-round:hover {
+            background-color: #2f5db8;
+            transform: scale(1.05);
+        }
+
+        .button-round:active {
+            transform: scale(0.98);
+        }
+
+        /* أنماط جديدة لحقول النص */
+        .input-field-large {
+            padding: 18px;
+            font-size: 18px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            border: 2px solid #ddd;
+        }
+
+        .input-field-large:focus {
+            border-color: #3a76d8;
+            background-color: #fff;
+        }
+
+        /* إضافة أنماط للخطوط والألوان */
+        p, label {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        /* تنسيق مربعات القوائم المنسدلة */
+        select {
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        select:focus {
+            border-color: #3a76d8;
+            background-color: #fff;
+        }
+
+        /* تأثيرات فلاتر الصور */
+        img {
+            border-radius: 10px;
+            transition: filter 0.3s ease;
+        }
+
+        img:hover {
+            filter: brightness(1.1) contrast(1.2);
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- نموذج تسجيل الدخول -->
+<div id="login-form" class="form-container">
+    <h2>تسجيل الدخول</h2>
+    <form id="login-form-content">
+        <label for="email">البريد الإلكتروني</label>
+        <input type="email" id="email" class="input-field" placeholder="أدخل بريدك الإلكتروني" required>
+
+        <label for="password">كلمة السر</label>
+        <input type="password" id="password" class="input-field" placeholder="أدخل كلمة السر" required>
+
+        <button type="submit" id="login-button" class="button">تسجيل الدخول</button>
+
+        <p id="forgot-password-link" class="link" onclick="showForgotPassword()">نسيت كلمة السر؟</p>
+        <p id="register-link" class="link" onclick="showRegister()">تسجيل حساب جديد</p>
+    </form>
+</div>
+
+<!-- نموذج استعادة كلمة السر -->
+<div id="forgot-password-form" class="form-container">
+    <h2>استعادة كلمة السر</h2>
+    <p id="forgot-password-text">هل تذكرت كلمة السر؟</p>
+    <form id="forgot-password-form-content">
+        <label for="forgot-email">البريد الإلكتروني</label>
+        <input type="email" id="forgot-email" class="input-field" placeholder="أدخل بريدك الإلكتروني" required>
+
+        <button type="submit" id="send-code-button" class="button">إرسال الكود</button>
+    </form>
+    <p class="back-button" onclick="goBackToLogin()">رجوع إلى تسجيل الدخول</p>
+</div>
+
+
+<div id="reset-password-form" class="form-container">
+    <h2>تغيير كلمة السر</h2>
+    <form id="reset-password-form-content">
+        <label for="reset-code">أدخل الكود</label>
+        <input type="text" id="reset-code" class="input-field" placeholder="أدخل الكود" required>
+
+        <label for="new-password">كلمة السر الجديدة</label>
+        <input type="password" id="new-password" class="input-field" placeholder="أدخل كلمة السر الجديدة" required>
+
+        <label for="confirm-password">تأكيد كلمة السر الجديدة</label>
+        <input type="password" id="confirm-password" class="input-field" placeholder="تأكيد كلمة السر" required>
+
+        <button type="submit" id="submit-new-password" class="button">تأكيد كلمة السر الجديدة</button>
+    </form>
+    <p class="back-button" onclick="goBackToForgotPassword()">رجوع إلى استعادة كلمة السر</p>
+</div>
+
+<!-- نموذج التسجيل -->
+<div id="register-form" class="form-container">
+    <h2>إنشاء حساب جديد</h2>
+    <form id="register-form-content">
+        <label for="register-email">البريد الإلكتروني</label>
+        <input type="email" id="register-email" class="input-field" placeholder="أدخل بريدك الإلكتروني" required>
+        <label for="newname">الاسم</label>
+        <input type="text" id="newname" class="input-field" placeholder="أدخل اسمك" required>
+
+        <label for="register-password">كلمة السر</label>
+        <input type="password" id="register-password" class="input-field" placeholder="أدخل كلمة السر" required>
+
+        <label for="confirm-register-password">تأكيد كلمة السر</label>
+        <input type="password" id="confirm-register-password" class="input-field" placeholder="تأكيد كلمة السر" required>
+
+        <button type="submit" id="register-button" class="button">تسجيل</button>
+    </form>
+    <p class="back-button" onclick="goBackToLogin()">رجوع إلى تسجيل الدخول</p>
+</div>
+
+<script>
+    // وظائف لإظهار وإخفاء النماذج بناءً على الأحداث
+    function showForgotPassword() {
+        document.getElementById('login-form').style.display = 'none';
+        document.getElementById('forgot-password-form').style.display = 'block';
+    }
+
+    function showRegister() {
+        document.getElementById('login-form').style.display = 'none';
+        document.getElementById('register-form').style.display = 'block';
+    }
+
+    function showResetPassword() {
+        document.getElementById('forgot-password-form').style.display = 'none';
+        document.getElementById('reset-password-form').style.display = 'block';
+    }
+
+    function goBackToLogin() {
+        document.getElementById('forgot-password-form').style.display = 'none';
+        document.getElementById('register-form').style.display = 'none';
+        document.getElementById('login-form').style.display = 'block';
+    }
+
+    function goBackToForgotPassword() {
+        document.getElementById('reset-password-form').style.display = 'none';
+        document.getElementById('forgot-password-form').style.display = 'block';
+    }
+
+    // التعامل مع إرسال البريد الإلكتروني (استعادة كلمة السر)
+    document.getElementById('forgot-password-form-content').addEventListener('submit', function (event) {
+        event.preventDefault();
+        let email = document.getElementById('forgot-email').value;
+        alert('تم إرسال كود التحقق إلى البريد الإلكتروني: ' + email);
+        showResetPassword();
+    });
+
+    // التعامل مع تغيير كلمة السر الجديدة
+    document.getElementById('reset-password-form-content').addEventListener('submit', function (event) {
+        event.preventDefault();
+        let resetCode = document.getElementById('reset-code').value;
+        let newPassword = document.getElementById('new-password').value;
+        let confirmPassword = document.getElementById('confirm-password').value;
+
+        if (newPassword === confirmPassword) {
+            alert('تم تغيير كلمة السر بنجاح!');
+        } else {
+            alert('كلمة السر الجديدة غير متطابقة مع التأكيد!');
+        }
+    });
+
+    async function hashPassword(password) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(password);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+        return hashHex;
+    }
+
+    // التحقق من تسجيل الدخول
+
+
+    // التحقق من تسجيل الدخول
+    document.getElementById('login-button').addEventListener('click', async function (e) {
+        e.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        const hashedPassword = await hashPassword(password);
+
+
+       await authenticateAndStoreInCookies(email,hashedPassword)
+    });
+    async function authenticateAndStoreInCookies(email, password) {
+        try {
+            const response = await fetch("http://localhost:3000/auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email, password })
+            });
+
+            if (response.ok) {
+                const user = await response.json();
+                document.cookie = `userId=${user.userid}; path=/; max-age=3600`;
+                document.cookie = `userName=${user.name}; path=/; max-age=3600`;
+                document.cookie = `userEmail=${user.email}; path=/; max-age=3600`;
+                document.cookie = `userCourses=${JSON.stringify(user.courses)}; path=/; max-age=3600`;
+                document.cookie = `userEvents=${JSON.stringify(user.events)}; path=/; max-age=3600`;
+                document.cookie = `userMessages=${JSON.stringify(user.messages)}; path=/; max-age=3600`;
+
+                window.location.href = "../index.html";
+            } else {
+                const error = await response.json();
+                alert("بيانات الدخول غير صحيحة.");
+            }
+        } catch (error) {
+            alert("حدث خطأ: " + error.message);
+        }
+    }
+
+    async function createUser(name, email, password, courses = [], events = [], messages = []) {
+        const user = {  name, email, password, courses, events, messages };
+
+        const response = await fetch("http://localhost:3000/users", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(user)
+        });
+
+
+        if(response.status==201){
+            alert('تم تسجيل الحساب بنجاح!');
+            goBackToLogin();
+        }else if(response.status==409){
+            alert('تم تسجيل الحساب من قبل!');
+        }
+        else{
+            alert('لم تتم عملية التسجيل!');
+        }
+        return response.json();
+    }
+
+
+    // التعامل مع نموذج التسجيل
+    document.getElementById('register-form-content').addEventListener('submit',async function (event) {
+        event.preventDefault();
+        let registerEmail = document.getElementById('register-email').value;
+        let registerPassword = document.getElementById('register-password').value;
+        let name = document.getElementById('newname').value;
+
+        let confirmRegisterPassword = document.getElementById('confirm-register-password').value;
+
+        if (registerPassword === confirmRegisterPassword) {
+            const hashedPassword = await hashPassword(registerPassword);
+      createUser(name,registerEmail,hashedPassword);
+
+
+
+        } else {
+            alert('كلمة السر الجديدة غير متطابقة مع التأكيد!');
+        }
+    });
+   // دالة لاستخراج البريد الإلكتروني من الرابط وطباعة النتيجة في وحدة التحكم
+    function printEmailFromURL() {
+        // الحصول على رابط الصفحة الحالي
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // استخراج البريد الإلكتروني من الرابط
+        const emailInURL = urlParams.get('email');
+
+        // إذا كان البريد الإلكتروني موجودًا في الرابط، اطبعه في وحدة التحكم
+        if (emailInURL) {
+            showRegister();
+            document.getElementById('register-email').value=urlParams.get('email');
+
+        } else {
+            console.log("لا يوجد بريد إلكتروني في الرابط.");
+        }
+    }
+
+    // تنفيذ الدالة عند تحميل الصفحة
+    window.onload = printEmailFromURL;
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحليل إحصائي للأبحاث التربوية</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            text-align: right;
+        }
+        .program-card {
+            display: flex;
+            margin: 30px;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: transform 0.3s ease;
+        }
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+        .program-card img {
+            width: 300px;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .program-info {
+            margin-right: 20px;
+            max-width: 600px;
+        }
+        .program-info h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        .program-info p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            color: #555;
+        }
+        .program-info button {
+            padding: 12px 30px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        .program-info button:hover {
+            background-color: #45a049;
+        }
+        .courses-section {
+            background-color: #fff;
+            padding: 40px;
+            margin: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        .courses-section h2 {
+            font-size: 28px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .course-card {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .course-card:hover {
+            transform: translateY(-10px);
+        }
+        .course-info {
+            max-width: 70%;
+        }
+        .course-info h4 {
+            font-size: 24px;
+            color: #333;
+            font-weight: bold;
+        }
+        .course-info p {
+            font-size: 16px;
+            margin: 10px 0;
+            color: #777;
+        }
+        .course-card button {
+            padding: 12px 25px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .course-card button:hover {
+            background-color: #45a049;
+        }
+        .search-box {
+            width: 80%;
+            margin: 30px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .search-box input {
+            width: 93%;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        @media (max-width: 480px) {
+
+
+            header .logo {
+                font-size: 1.2em;
+            }
+
+
+        }header {
+             background-color: #005c99;
+             color: white;
+             padding: 15px 20px;
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+             position: relative;
+             z-index: 1000;
+         }
+
+        header .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+            font-family: 'Arial', sans-serif;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        header nav {
+            display: flex;
+            gap: 20px;
+            width: 90%;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #ff9e00;
+        }
+
+        header .dropdown {
+            font-size: 2.5em;
+            cursor: pointer;
+            display: none;
+        }
+        @media (max-width: 768px) {
+            header nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                background-color: #005c99;
+                top: 100%;
+                right: 0;
+                width: 90%;
+                padding: 20px;
+            }
+
+            header nav.active {
+                display: flex;
+            }
+
+            header .dropdown {
+                display: block;
+            }
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+            direction: rtl;
+        }
+
+        .container h1 {
+            font-size: 2rem;
+            color: #004080;
+            margin-bottom: 10px;
+        }
+
+        .container p {
+            font-size: 1.2rem;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* جعل التصميم متجاوبًا */
+        @media (max-width: 768px) {
+            .container h1 {
+                font-size: 1.8rem;
+            }
+
+            .container p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container h1 {
+                font-size: 1.5rem;
+            }
+
+            .container p {
+                font-size: 0.9rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Search Box -->
+<header>
+    <a href="./loader.html" class="logo">أكاديمية طفل وامرأة</a>
+    <div class="dropdown" onclick="toggleDropdown()">☰</div>
+    <nav>
+        <a href="./loader.html">الصفحة الرئيسية</a>
+        <a href="about.html">من نحن</a>
+        <a href="programs.html">البرامج والخدمات</a>
+        <a href="events.html">الفعاليات</a>
+        <a href="resources.html">الموارد</a>
+        <a href="contact.html">تواصل معنا</a>
+    </nav>
+</header>
+<div class="container">
+    <h1>دعم نفسي واجتماعي للزوجات والاهتمام بالمشاكل الأسرية</h1>
+    <p>دعم الزوجات نفسيًا واجتماعيًا هو أمر أساسي لضمان استقرار الأسرة وسعادتها. يتضمن هذا الدعم توفير بيئة صحية للتفاهم والتواصل بين الزوجين، ومساعدة الزوجة في التعامل مع الضغوط النفسية والاجتماعية التي قد تواجهها. يشمل ذلك تقديم استشارات نفسية للتعامل مع المشاكل الأسرية، تعزيز مهارات التواصل داخل الأسرة، ودعم الزوجات في تحقيق التوازن بين حياتهن الشخصية والعائلية.</p>
+</div>
+
+
+<div class="search-box">
+    <input type="text" id="searchInput" onkeyup="searchCourses()" placeholder="ابحث عن دورة...">
+</div>
+<!-- Courses Section -->
+<div class="courses-section" id="coursesSection">
+    <h2>دورات يمكنك التسجيل فيها</h2>
+    <!-- Course Cards will be injected by JavaScript -->
+</div>
+
+<script>
+    function renderCourses() {
+        const coursesSection = document.getElementById('coursesSection');
+        cours.forEach(course => {
+            const courseCard = document.createElement('div');
+            courseCard.classList.add('course-card');
+            courseCard.innerHTML = `
+            <div class="course-info" data-course="${course.name}">
+                <h4>${course.name}</h4>
+                <p>${course.description}</p>
+            </div>
+            <button onclick="registerCourse(${course.id})">التسجيل الآن</button>
+        `;
+            coursesSection.appendChild(courseCard);
+        });
+    }
+    function getCookie(name) {
+        const cookies = document.cookie.split("; ");
+        for (const cookie of cookies) {
+            const [key, value] = cookie.split("=");
+            if (key === name) {
+                return decodeURIComponent(value);
+            }
+        }
+        return null;
+    }
+    function registerCourse(courseId) {
+        const userId = getCookie("userId");
+
+        if (!userId) {
+            alert("خطأ: لم يتم العثور على معرف المستخدم. الرجاء تسجيل الدخول.");
+            return;
+        }
+
+        addcourse(userId, courseId);
+    }
+
+    async function addcourse(userid,course){
+
+        try {
+            const response = await fetch(`http://localhost:3000/users/${userid}/courses`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ course })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert("تمت إضافة الدورة بنجاح! ✅");
+            } else {
+                alert(`خطأ: ${data.error}`);
+            }
+        } catch (error) {
+            alert("حدث خطأ أثناء الاتصال بالخادم. حاول مرة أخرى لاحقًا.");
+        }
+    }
+
+    function searchCourses() {
+        var input = document.getElementById('searchInput').value.toLowerCase();
+        var courses = document.querySelectorAll('.course-card');
+        courses.forEach(function(course) {
+            var courseName = course.querySelector('.course-info').getAttribute('data-course').toLowerCase();
+            if (courseName.includes(input)) {
+                course.style.display = "flex";
+            } else {
+                course.style.display = "none";
+            }
+        });
+    }
+    function toggleDropdown() {
+        const nav = document.querySelector('nav');
+        nav.classList.toggle('active');
+    }
+    cours = [ ];
+    async function getCoursesByCategory(category) {
+        try {
+            const response = await fetch(`http://localhost:3000/courses?category=${category}`);
+
+            if (response.ok) {
+                const course = await response.json();
+                const filteredCourses = course.filter(course => course.category === category);
+                cours=filteredCourses;
+                alert("تم جلب الدورات بنجاح.");
+                renderCourses();
+                return filteredCourses;
+            } else {
+                alert("فشل في جلب الدورات.");
+            }
+        } catch (error) {
+            alert("حدث خطأ أثناء جلب الدورات.");
+        }
+    }
+
+    getCoursesByCategory("دعم نفسي واجتماعي للزوجات والاهتمام بالمشاكل الأسرية")
+        .then(courses => {
+            console.log("الدورات في الفئة:", cours);
+        });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدورات المسجلة</title>
+
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #eef2f7;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            text-align: right;
+        }
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            width: 100%;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        nav a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ffcc00;
+        }
+        .search-box {
+            margin: 30px auto;
+            width: 60%;
+            text-align: center;
+        }
+        #search {
+            width: 100%;
+            padding: 12px;
+            font-size: 20px;
+            border: 2px solid #0056b3;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .courses-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 30px;
+        }
+        .course {
+            background: linear-gradient(135deg, #007bff, #003b80);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            font-size: 20px;
+            font-weight: bold;
+            width: 280px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .course:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(135deg, #0056b3, #001f4d);
+        }
+        footer {
+            background-color: #0056b3;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: relative;
+            width: 100%;
+            margin-top: 40px;
+            font-size: 16px;
+        }
+        @media (max-width: 480px) {
+
+
+            header .logo {
+                font-size: 1.2em;
+            }
+
+
+        }header {
+             background-color: #005c99;
+             color: white;
+             padding: 15px 20px;
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+             position: relative;
+             z-index: 1000;
+                     width: 100%;
+         }
+
+        header .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+            font-family: 'Arial', sans-serif;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        header nav {
+            display: flex;
+            gap: 20px;
+            width: 90%;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #ff9e00;
+        }
+
+        header .dropdown {
+            font-size: 2.5em;
+            cursor: pointer;
+            display: none;
+        }
+        @media (max-width: 768px) {
+            header nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                background-color: #005c99;
+                top: 100%;
+                right: 0;
+                width: 90%;
+                padding: 20px;
+            }
+
+            header nav.active {
+                display: flex;
+            }
+
+            header .dropdown {
+                display: block;
+            }
+        }
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply animation to the body */
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #eef2f7;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            text-align: right;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        /* Apply animation to courses */
+        .course {
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.5s;
+        }
+
+        /* Apply staggered animation to each course */
+        .course:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+        .course:nth-child(2) {
+            animation-delay: 0.7s;
+        }
+        .course:nth-child(3) {
+            animation-delay: 0.9s;
+        }
+        .course:nth-child(4) {
+            animation-delay: 1.1s;
+        }
+        footer {
+            width: 102%;
+            text-align: center;
+            position: relative;
+            top: 170%;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <a href="./loader.html" class="logo">أكاديمية طفل وامرأة</a>
+    <div class="dropdown" onclick="toggleDropdown()">☰</div>
+    <nav>
+        <a href="./loader.html">الصفحة الرئيسية</a>
+        <a href="about.html">من نحن</a>
+        <a href="programs.html">البرامج والخدمات</a>
+        <a href="events.html">الفعاليات</a>
+        <a href="resources.html">الموارد</a>
+        <a href="contact.html">تواصل معنا</a>
+    </nav>
+</header>
+<main>
+    <div class="search-box">
+        <input type="text" id="search" placeholder="ابحث عن دورة..." onkeyup="filterCourses()">
+    </div>
+    <div class="courses-list" id="courses-list"></div>
+</main>
+
+<script>
+   courses = [ ];
+    async function getUserCourses(userId) {
+        try {
+            const response = await fetch(`http://localhost:3000/users/${userId}/courses`);
+            const userCourses = await response.json();
+
+            courses = userCourses.map(course => ({
+                name: course.name,
+                link: course.link
+            }));
+            console.log(courses[0].name)
+            displayCourses();
+
+            return courses;
+        } catch (error) {
+            console.error("Error fetching user courses:", error);
+        }
+    }
+   function getCookie(name) {
+       const cookies = document.cookie.split("; ");
+       for (const cookie of cookies) {
+           const [key, value] = cookie.split("=");
+           if (key === name) {
+               return decodeURIComponent(value);
+           }
+       }
+       return null;
+   }
+  async  function getcourses() {
+        const userId = getCookie("userId");
+
+        if (!userId) {
+            alert("خطأ: لم يتم العثور على معرف المستخدم. الرجاء تسجيل الدخول.");
+            return;
+        }
+
+      getUserCourses(userId);
+
+    }
+   getcourses();
+
+    function displayCourses() {
+        const coursesList = document.getElementById('courses-list');
+        coursesList.innerHTML = '';
+        courses.forEach(course => {
+            const courseDiv = document.createElement('div');
+            courseDiv.classList.add('course');
+            courseDiv.textContent = course.name;
+            courseDiv.onclick = () => window.open(course.link, '_blank');
+            coursesList.appendChild(courseDiv);
+        });
+    }
+
+    function filterCourses() {
+        let input = document.getElementById('search').value.toLowerCase();
+        let coursesDivs = document.querySelectorAll('.course');
+
+        coursesDivs.forEach(course => {
+            if (course.textContent.toLowerCase().includes(input)) {
+                course.style.display = "block";
+            } else {
+                course.style.display = "none";
+            }
+        });
+    }
+    function toggleDropdown() {
+        const nav = document.querySelector('nav');
+        nav.classList.toggle('active');
+    }
+
+</script>
+</body>
+</html>

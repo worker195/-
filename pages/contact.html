@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تواصل معنا - أكاديمية طفل وامرأة</title>
     <link rel="stylesheet" href="contact-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <header>
@@ -26,16 +27,18 @@
         <p>نحن هنا للمساعدة! إذا كان لديك أي استفسار أو سؤال، لا تتردد في الاتصال بنا.</p>
         <div class="contact-details">
             <div class="contact-item">
-                <h2>العنوان</h2>
-                <p>الشارع الرئيسي، نابلس، فلسطين</p>
+                <h2>تواصل مع عبد الرحمن</h2>
+                <p>📱 0569451267 </p>
+                <p><i class="fa fa-whatsapp" style="font-size:24px;color: #9cf19c"></i> واتس آب: <a href="https://wa.me/+972569451267" target="_blank">اضغط هنا للتواصل على واتس آب</a></p>
+                <p>البريد الإلكتروني: <a href="mailto:abdalrhmanaljamal89@gmail.com">abdalrhmanaljamal89@gmail.com</a></p>
+                <p>الموقع: الخليل</p>
             </div>
             <div class="contact-item">
-                <h2>الهاتف</h2>
-                <p>+970 123 456 789</p>
-            </div>
-            <div class="contact-item">
-                <h2>البريد الإلكتروني</h2>
-                <p>info@academy.com</p>
+                <h2>أو تواصل مع مدير الموقع</h2>
+                <p>📱 0594380216</p>
+                <p><i class="fa fa-whatsapp" style="font-size:24px;color: #9cf19c"></i> واتس آب: <a href="https://wa.me/+97259438021" target="_blank">اضغط هنا للتواصل على واتس آب</a></p>
+                <p>البريد الإلكتروني: <a href="mailto:w8900661@gmail.com">w8900661@gmail.com</a></p>
+                <p>الموقع: نابلس</p>
             </div>
         </div>
     </section>
@@ -43,19 +46,123 @@
     <section class="contact-form">
         <h2>أرسل لنا رسالة</h2>
         <form action="#" method="POST">
-            <input type="text" name="name" placeholder="الاسم" required>
-            <input type="email" name="email" placeholder="البريد الإلكتروني" required>
             <textarea name="message" placeholder="اكتب رسالتك هنا..." required></textarea>
             <button type="submit">إرسال</button>
         </form>
     </section>
 </main>
+<section class="messages-container">
+    <h2>رسائلك</h2>
+    <div id="messages-list"></div>
+</section>
+
+
+
+
 
 <footer>
     <p>&copy; 2025 أكاديمية طفل وامرأة | جميع الحقوق محفوظة</p>
 </footer>
 
 <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+        const userId = document.cookie.split('; ').find(row => row.startsWith('userId='))?.split('=')[1];
+        if (!userId) {
+            alert("لم يتم العثور على معرف المستخدم.");
+            return;
+        }
+
+        try {
+            const response = await fetch(`http://localhost:3000/users/${userId}`);
+            const data = await response.json();
+
+            if (data && data.messages) {
+                displayMessages(data.messages);
+            } else {
+                alert("لا توجد رسائل.");
+            }
+        } catch (error) {
+            console.error("حدث خطأ أثناء جلب البيانات:", error);
+        }
+    });
+
+    function displayMessages(messages) {
+        const messagesList = document.getElementById("messages-list");
+        messagesList.innerHTML = "";
+
+        if (!messages.length) {
+            messagesList.innerHTML = "<p>لا توجد رسائل متاحة.</p>";
+            return;
+        }
+
+        messages.forEach(msg => {
+   if(msg.senderid<0){
+       const card = document.createElement("div");
+       card.classList.add("message-card");
+
+       const messageWrapper = document.createElement("div");
+       messageWrapper.classList.add("message-wrapper");
+
+
+           messageWrapper.style.textAlign = "left";   // Align messages from the user to the left
+           messageWrapper.style.direction = "ltr";    // Left-to-right direction
+
+
+       messageWrapper.innerHTML = `<p>${msg.msg}</p>`;
+       card.appendChild(messageWrapper);
+       messagesList.appendChild(card);
+   }else{
+
+           const card = document.createElement("div");
+           card.classList.add("message-card");
+
+           const messageWrapper = document.createElement("div");
+           messageWrapper.classList.add("message-wrapper");
+
+
+
+
+           messageWrapper.innerHTML = `<p>${msg.msg}</p>`;
+           card.appendChild(messageWrapper);
+           messagesList.appendChild(card);
+
+
+   }
+        });
+
+    }
+    document.querySelector(".contact-form form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const userId = document.cookie.split("; ").find(row => row.startsWith("userId="))?.split("=")[1];
+        if (!userId) return alert("لم يتم العثور على معرف المستخدم");
+
+        const message = document.querySelector('textarea[name="message"]').value;
+
+        const response = await fetch(`http://localhost:3000/users/${userId}/messages`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ senderid: userId, msg: message })
+        });
+
+        const result = await response.json();
+
+
+
+        try {
+            const response = await fetch(`http://localhost:3000/users/${userId}`);
+            const data = await response.json();
+
+            if (data && data.messages) {
+                displayMessages(data.messages);
+            } else {
+                alert("لا توجد رسائل.");
+            }
+        } catch (error) {
+            console.error("حدث خطأ أثناء جلب البيانات:", error);
+        }
+        alert(result.message || result.error);
+    });
+
     function toggleDropdown() {
         const nav = document.querySelector('nav');
         nav.classList.toggle('active');

@@ -573,6 +573,7 @@ header .dropdown {
     background: #ff8c00;
     text-align: center;
     color: #ffffff;
+    width: 100%;
 }
 
 .contact h2 {
@@ -630,8 +631,10 @@ header .logo {
 }
 
 header nav {
+    top: 100%;
     display: flex;
     gap: 20px;
+
 }
 
 header nav a {
@@ -656,17 +659,36 @@ header .dropdown {
         flex-direction: column;
         position: absolute;
         background-color: #005c99;
-        top: 100%;
+        top: 130%;
         right: 0;
-        width: 100%;
+        width: 90%;
         padding: 20px;
+
     }
 
     header nav.active {
+        top: 100%;
+        width: 90%;
         display: flex;
     }
 
     header .dropdown {
         display: block;
     }
-}
+}.cart-badge {
+     position: absolute;
+     top: -8px;
+     right: -10px;
+     background: red;
+     color: white;
+     font-size: 12px;
+     font-weight: bold;
+     width: 12px;
+     height: 12px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     border-radius: 50%;
+     border: 2px solid white;
+ }
+

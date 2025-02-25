@@ -73,25 +73,28 @@ header .dropdown {
         display: block;
     }
 }
-
 /* محتوى الصفحة */
 main {
-    padding: 40px 20px;
+    padding: 50px 30px;
+    background-color: #f4f9fd;
 }
 
 /* قسم معلومات التواصل */
 .contact-info {
-    background-color: white;
-    padding: 40px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    margin-bottom: 40px;
+    background-color: #ffffff;
+    padding: 50px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    margin-bottom: 50px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-info h1 {
     color: #005c99;
-    font-size: 2.5em;
+    font-size: 3em;
     margin-bottom: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 .contact-info p {
@@ -103,27 +106,46 @@ main {
 
 .contact-details {
     display: flex;
-    gap: 40px;
+    gap: 30px;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .contact-item {
     flex: 1;
     background-color: #f9f9f9;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-item h2 {
     color: #005c99;
-    font-size: 1.8em;
+    font-size: 2em;
     margin-bottom: 15px;
+    font-weight: bold;
 }
 
 .contact-item p {
     font-size: 1.2em;
     color: #555;
+    line-height: 1.6;
+}
+
+.contact-item a {
+    color: #005c99;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: #ff9e00;
+}
+
+.contact-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* استجابة للأجهزة المحمولة */
@@ -135,32 +157,35 @@ main {
 
 /* قسم نموذج الاتصال */
 .contact-form {
-    background-color: white;
-    padding: 40px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 50px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
 }
 
 .contact-form h2 {
     color: #005c99;
-    font-size: 2.5em;
+    font-size: 2.8em;
     margin-bottom: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 .contact-form form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
 }
 
 .contact-form input, .contact-form textarea {
-    padding: 15px;
+    padding: 18px;
     font-size: 1.2em;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 1px solid #ccc;
-    width: 100%;
+
     background-color: #f9f9f9;
     transition: border 0.3s ease;
+    width: 90%;
 }
 
 .contact-form input:focus, .contact-form textarea:focus {
@@ -170,10 +195,10 @@ main {
 .contact-form button {
     background-color: #ff9e00;
     color: white;
-    padding: 15px 30px;
-    font-size: 1.2em;
+    padding: 18px 35px;
+    font-size: 1.3em;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 10px;
     border: none;
     transition: background-color 0.3s ease;
 }
@@ -187,24 +212,112 @@ footer {
     background-color: #005c99;
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 25px;
+    font-size: 1.2em;
 }
 
 footer p {
     margin: 0;
-    font-size: 1.1em;
 }
 
-
+/* التأثيرات على الأقسام */
 .contact-info, .contact-form {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-info:hover, .contact-form:hover {
     transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
+@media (max-width: 480px) {
+    header .logo {
+        font-size: 1.2em;
+    }
+
+    .contact-info, .contact-form {
+        padding: 25px;
+    }
+
+    .contact-form button {
+        font-size: 1.1em;
+    }
+}
+/* استجابة للأجهزة المحمولة */
+@media (max-width: 768px) {
+    header nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background-color: #005c99;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
+    header nav.active {
+        display: flex;
+    }
+
+    header .dropdown {
+        display: block;
+    }
+
+    .programs-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .program-card {
+        width: 90%; /* Makes cards full-width for better mobile display */
+    }
+
+    .program-info h2 {
+        font-size: 1.5em;
+    }
+
+    .program-info p {
+        font-size: 1em;
+    }
+
+    .program-info button {
+        font-size: 1em;
+        padding: 12px 24px;
+    }
+}
+
+/* استجابة للشاشات الصغيرة جداً */
+@media (max-width: 480px) {
+    header {
+        padding: 10px 15px;
+    }
+
+    header .logo {
+        font-size: 1.2em;
+    }
+
+    .programs-header h1 {
+        font-size: 2em;
+    }
+
+    .program-card {
+        width: 100%;
+    }
+
+    .program-info h2 {
+        font-size: 1.3em;
+    }
+
+    .program-info p {
+        font-size: 0.9em;
+    }
+
+    .program-info button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+}
 @media (max-width: 480px) {
 
 
@@ -212,7 +325,84 @@ footer p {
         font-size: 1.2em;
     }
 
-    .contact-info, .contact-form {
+
+}header {
+     background-color: #005c99;
+     color: white;
+     padding: 15px 20px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     position: relative;
+     z-index: 1000;
+ }
+
+header .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+    font-family: 'Arial', sans-serif;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+header nav {
+    display: flex;
+    gap: 20px;
+    width: 90%;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #ff9e00;
+}
+
+header .dropdown {
+    font-size: 2.5em;
+    cursor: pointer;
+    display: none;
+}
+@media (max-width: 768px) {
+    header nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background-color: #005c99;
+        top: 100%;
+        right: 0;
+        width: 90%;
         padding: 20px;
     }
+
+    header nav.active {
+        display: flex;
+    }
+
+    header .dropdown {
+        display: block;
+    }
 }
+.messages-container {
+    width: 80%;
+    margin: auto;
+    text-align: right;
+}
+.message-card {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.message-card p {
+    margin: 5px 0;
+}
+
