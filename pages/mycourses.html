@@ -238,7 +238,7 @@
    courses = [ ];
     async function getUserCourses(userId) {
         try {
-            const response = await fetch(`http://localhost:3000/users/${userId}/courses`);
+            const response = await fetch(`https://academic-server.onrender.com/users/${userId}/courses`);
             const userCourses = await response.json();
 
             courses = userCourses.map(course => ({
