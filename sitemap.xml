@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- الصفحة الرئيسية -->
+    <url>
+        <loc>https://worker195.github.io/-/index.html</loc>
+        <lastmod>2025-02-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <!-- صفحة Loader -->
     <url>
         <loc>https://worker195.github.io/-/pages/loader.html</loc>
         <lastmod>2025-02-26</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
-    
+
+ 
+
+    <!-- مثال على إضافة صفحة أخرى -->
+    <url>
+        <loc>https://worker195.github.io/-/pages/contact.html</loc>
+        <lastmod>2025-02-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+
 </urlset>
