@@ -3,35 +3,36 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Change if your default branch is different
+      - main  # This can be any branch you use in your private repo
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
-      # Checkout the code
+      # Checkout the private repository
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Set up Node.js (adjust if you're using a different runtime)
+      # Set up Node.js (if you're using a Node.js project, adjust as needed)
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'  # Adjust the version if needed
+          node-version: '16'  # Adjust as needed for your environment
 
-      # Install dependencies (npm, yarn, etc.)
+      # Install dependencies (if you're using npm)
       - name: Install dependencies
         run: npm install
 
-      # Build the project (adjust this based on your setup)
+      # Build the project
       - name: Build project
-        run: npm run build
+        run: npm run build  # Adjust if you're using something else
 
-      # Deploy to GitHub Pages
+      # Deploy to the public GitHub Pages repository
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          branch: gh-pages  # This is where the built files will go
-          folder: build     # Folder containing the built files (adjust as needed)
-          token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build  # Adjust this if your build folder is different (e.g., 'dist', 'public', etc.)
+          destination_repo: worker195/worker195.github.io  # Your public GitHub Pages repo
+          branch: main  # Deploy to the `main` branch or `gh-pages` branch of the public repo
